@@ -1,6 +1,7 @@
 // utils
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 // assets
 import authImg from '../../../assets/images/auth-image.jpg'
@@ -12,6 +13,15 @@ import Footer from '../../../components/footer'
 
 
 const Login = () => {
+  const navigate = useNavigate()
+  
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    localStorage.setItem('@isLogin', "tes")
+    return navigate(-1)
+  }
+
   return (
     <>
       <div className='md:flex font-rubik'>
@@ -42,7 +52,7 @@ const Login = () => {
 
               <Link to="/forgot-password" className='text-sm border-b md:border-secondary md:border-b-2 md:text-secondary md:font-bold '>Forgot password?</Link>
 
-            <button className='bg-primary text-title py-3 mt-5 block w-full rounded-lg font-bold hover:bg-secondary md:text-secondary hover:text-white ease-in duration-200'>
+            <button onClick={handleLogin} className='bg-primary text-title py-3 mt-5 block w-full rounded-lg font-bold hover:bg-secondary md:text-secondary hover:text-white ease-in duration-200'>
               Login
             </button>
 
