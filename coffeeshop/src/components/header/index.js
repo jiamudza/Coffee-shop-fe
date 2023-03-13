@@ -185,7 +185,7 @@ const Header = (props) => {
                     <p>History</p>
                 </div>
                 <div className='absolute bottom-20 w-full cursor-pointer flex justify-around px-10'>
-                <Link to="/login" className='px-5 py-2 bg-Transparent mx-2 text-title font-bold rounded-3xl hover:bg-secondary hover:text-white ease-in duration-200'>Login</Link>
+                <Link to="/login" className='px-5 py-2 bg-Transparent mx-2 text-title font-bold rounded-3xl hover:bg-secondary hover:text-white ease-in duration-200 focus:bg-none'>Login</Link>
                 <Link to="/register" className='px-5 py-2 bg-primary text-secondary font-bold rounded-3xl hover:bg-secondary hover:text-white ease-in duration-200'>Sign Up</Link>
             </div>
             </div>
