@@ -16,7 +16,8 @@ module.exports = {
         pale: "#EFEEEE"
       },
       backgroundImage: {
-        auth: "url('../src/assets/images/auth-image.jpg')"
+        auth: "url('../src/assets/images/auth-image.jpg')",
+        jumbotron: "url('../src/assets/images/jumbotron.jpg')",
       }
     },
   },

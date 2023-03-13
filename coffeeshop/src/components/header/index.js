@@ -38,7 +38,7 @@ const Header = (props) => {
         }
     }, [])
   return (
-    <div className='font-rubik'>
+    <div className='font-rubik bg-white pb-5 bg-opacity-90'>
         <div className={drawerOpen ? 'flex blur-sm md:blur-none pt-5 px-5 md:px-20 items-center justify-between' : 'flex  pt-5 px-5 md:px-20 items-center justify-between'}>
                 <button id={hamburgerMenu} onClick={() => {
                     setHamburgerMenu('hamburger-menu-active')
@@ -117,7 +117,7 @@ const Header = (props) => {
 <div className='bg-secondary w-full rounded-r-xl'>
     <div onClick={() => {
         setDrawerOpen(!drawerOpen)
-        setHamburgerMenu(!hamburgerMenu)
+        setHamburgerMenu('hamburger-menu')
     }} className='bg-red-500 rounded  right-0 absolute py-2 pr-0 pl-3 cursor-pointer'>
         <span className='w-[30px] h-[5px] my-1 bg-text block rotate-45 rounded-lg origin-top-left'></span>
         <span className='w-[30px] h-[5px] bg-text block scale-0'></span>
@@ -157,7 +157,7 @@ const Header = (props) => {
                 <div className=' flex flex-col items-end w-full rounded-r-xl'>
                     <div onClick={() => {
                         setDrawerOpen(!drawerOpen)
-                        setHamburgerMenu(!hamburgerMenu)
+                        setHamburgerMenu('hamburger-menu')
                     }} className='bg-red-500 rounded w-11 py-2 pr-0 pl-3 cursor-pointer'>
                         <span className='w-[30px] h-[5px] my-1 bg-text block rotate-45 rounded-lg origin-top-left'></span>
                         <span className='w-[30px] h-[5px] bg-text block scale-0'></span>
