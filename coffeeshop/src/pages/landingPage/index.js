@@ -4,11 +4,13 @@ import Footer from '../../components/footer';
 import Header from '../../components/header';
 
 import {HiUser, HiLocationMarker} from 'react-icons/hi'
-import {AiOutlineHeart} from 'react-icons/ai'
+import {AiOutlineCheck, AiOutlineHeart} from 'react-icons/ai'
+import { BsCheckCircleFill } from 'react-icons/bs';
 
 // assets
 import teamworkHero from '../../assets/images/teamwork-hero.png'
-import { BsCheckCircleFill } from 'react-icons/bs';
+import product from '../../assets/images/product-placeholder.jpg'
+
 const LandingPage = () => {
 
   return (
@@ -16,14 +18,14 @@ const LandingPage = () => {
       <div className='sticky top-0'>
         <Header />
       </div>
-      <div className='px-5'>
+      <div className='px-5 md:px-0'>
         <section className='bg-jumbotron text-white mt-5 px-10 py-10 font-bold'>
           <div>
             <h1 className='text-3xl'>
-            Start Your Day with Coffee and Good Meals
+            Start Your Day with <br className='hidden lg:block' />Coffee and Good Meals
             </h1>
             <p className='mt-5'>
-            We provide high quality beans, good taste, and healthy meals made by love just for you. Start your day with us for a bigger smile!            </p>
+            We provide high quality beans, good taste, and healthy <br className='hidden lg:block' /> meals made by love just for you. Start your day with us<br className='hidden lg:block' /> for a bigger smile!            </p>
           </div>
           <button className='bg-primary text-secondary px-4 py-2 mt-5 md:mb-20 rounded-lg'>
             Get Started
@@ -81,14 +83,102 @@ const LandingPage = () => {
         </div>
       </section >
       {/* favorite */}
-      <section className='text-center mt-10'>
-        <h2 className='text-title font-bold text-4xl'>
+      <section className='mt-10'>
+        <h2 className='text-title font-bold text-4xl text-center'>
         Here is People’s Favorite
         </h2>
+        <p className='mt-5 text-text text-center'>Let’s choose and have a bit taste of poeple’s favorite. It might be yours too!</p>
+
+        <div className='mt-28 flex items-center justify-evenly'>
+            <div className='flex flex-col items-center border-2 relative px-5 -z-10 border-pale rounded-lg w-64 h-[70vh]'>
+              <img src={product} className='rounded-full absolute -top-16'/>
+              <p className='font-bold mt-20'>Hazelnut Latte</p>
+              <div className=''>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>HazelnutSyrup</p>
+                </span>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>Wanilla Whipped Cream</p>
+                </span>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>Ice/Hot</p>
+                </span>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>Sliced Banana on Top</p>
+                </span>
+                </div>
+                <div className='flex flex-col items-center absolute bottom-3'>
+                  <p className='text-title font-bold'>IDR 25.000</p>
+                  <button className='px-10 py-3 rounded-3xl mt-3 bg-primary font-bold text-secondary'>Select</button>
+                </div>
+            </div>
+
+
+            <div className='hidden md:flex flex-col items-center border-2 relative px-5 -z-10 border-pale rounded-lg w-64 h-[70vh]'>
+              <img src={product} className='rounded-full absolute -top-16'/>
+              <p className='font-bold mt-20'>Hazelnut Latte</p>
+              <div className=''>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>HazelnutSyrup</p>
+                </span>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>Wanilla Whipped Cream</p>
+                </span>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>Ice/Hot</p>
+                </span>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>Sliced Banana on Top</p>
+                </span>
+                </div>
+                <div className='flex flex-col items-center absolute bottom-3'>
+                  <p className='text-title font-bold'>IDR 25.000</p>
+                  <button className='px-10 py-3 rounded-3xl mt-3 bg-primary font-bold text-secondary'>Select</button>
+                </div>
+
+
+            </div>
+            <div className='hidden md:flex flex-col items-center border-2 relative px-5 -z-10 border-pale rounded-lg w-64 h-[70vh]'>
+              <img src={product} className='rounded-full absolute -top-16'/>
+              <p className='font-bold mt-20'>Hazelnut Latte</p>
+              <div className=''>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>HazelnutSyrup</p>
+                </span>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>Wanilla Whipped Cream</p>
+                </span>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>Ice/Hot</p>
+                </span>
+                <span className='flex items-center py-3 text-text'>
+                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
+                <p className='ml-4'>Sliced Banana on Top</p>
+                </span>
+                </div>
+                <div className='flex flex-col items-center absolute bottom-3'>
+                  <p className='text-title font-bold'>IDR 25.000</p>
+                  <button className='px-10 py-3 rounded-3xl mt-3 bg-primary font-bold text-secondary'>Select</button>
+                </div>
+            </div>
+        </div>
       </section>
       {/* footer */}
       </div>
+      <div className='pt-20'>
       <Footer />
+      </div>
     </div>
   )
 }

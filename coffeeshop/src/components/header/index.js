@@ -12,6 +12,7 @@ import {FaUserCircle, FaCoffee} from 'react-icons/fa'
 import {RiLogoutCircleLine, RiSettings3Fill, RiHistoryFill} from 'react-icons/ri'
 import {IoMdCart} from 'react-icons/io'
 import {AiFillHome} from 'react-icons/ai'
+import {HiOutlineArrowLeft} from 'react-icons/hi'
 
 const Header = (props) => {
     const [notif, setNotif] = useState(false)
@@ -118,10 +119,8 @@ const Header = (props) => {
     <div onClick={() => {
         setDrawerOpen(!drawerOpen)
         setHamburgerMenu('hamburger-menu')
-    }} className='bg-red-500 rounded  right-0 absolute py-2 pr-0 pl-3 cursor-pointer'>
-        <span className='w-[30px] h-[5px] my-1 bg-text block rotate-45 rounded-lg origin-top-left'></span>
-        <span className='w-[30px] h-[5px] bg-text block scale-0'></span>
-        <span className='w-[30px] h-[5px] my-1 bg-text block -rotate-45 origin-bottom-left rounded-lg'></span>
+    }} className=' rounded right-4 absolute py-3 pr-0 pl-3 cursor-pointer'>
+        <HiOutlineArrowLeft color='white' size={30}/>
     </div>
         <div onClick={() => navigate('/profile')} className='cursor-pointer flex flex-col items-center mx-20 py-5 text-white'>
         <img className='w-28 h-28 rounded-full' src={userPlaceholder} />
@@ -158,10 +157,8 @@ const Header = (props) => {
                     <div onClick={() => {
                         setDrawerOpen(!drawerOpen)
                         setHamburgerMenu('hamburger-menu')
-                    }} className='bg-red-500 rounded w-11 py-2 pr-0 pl-3 cursor-pointer'>
-                        <span className='w-[30px] h-[5px] my-1 bg-text block rotate-45 rounded-lg origin-top-left'></span>
-                        <span className='w-[30px] h-[5px] bg-text block scale-0'></span>
-                        <span className='w-[30px] h-[5px] my-1 bg-text block -rotate-45 origin-bottom-left rounded-lg'></span>
+                    }} className='rounded py-4 pr-0 mx-4 cursor-pointer'>
+                        <HiOutlineArrowLeft className='text-secondary' size={30}/>
                     </div>
 
                     

@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
 
         <div className='text-text flex justify-around mt-10'>
-            <div className='mx-5'>
+            <div className='md:mx-5'>
                 <p className='text-title font-bold'>
                     Product
                 </p>
@@ -46,7 +46,7 @@ const Footer = () => {
                 </p>
                 
             </div>
-            <div className='mx-5'>
+            <div className='md:mx-5'>
                 <p className='text-title font-bold'>
                     Engage
                 </p>
