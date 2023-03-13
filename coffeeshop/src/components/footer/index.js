@@ -7,24 +7,24 @@ import brand from '../../assets/images/brand-logo.png'
 
 const Footer = () => {
   return (
-    <div className='flex items-center justify-between mx-20 pb-10'>
+    <div className='md:flex items-center justify-between mx-5 md:mx-20 pb-10'>
         <div>
             <Link to="/" className='flex items-center font-bold'>
                 <img src={brand} alt='logo-brand'/>
-                <p className='px-2'>Coffe Shop</p>
+                <p className='px-2'>Coffeejie</p>
             </Link>
 
-            <p className='text-text font-[500] mt-3'>
+            <p className='text-text font-[500] mt-3 text-center'>
             Coffee Shop is a store that sells some good meals, <br />and especially coffee. We provide high quality beans
             </p>
-            <div className='flex mt-3'>
-                <FaFacebookF size={40} className="mx-2 bg-primary px-2 py-2 rounded-full text-secondary"/>
-                <FaTwitter size={40} className="mx-2 bg-primary px-2 py-2 rounded-full text-secondary"/>
-                <FaInstagram size={40} className="mx-2 bg-primary px-2 py-2 rounded-full text-secondary"/>
+            <div className='flex justify-center md:mt-3 mt-10'>
+                <FaFacebookF size={40} className="mx-2 bg-primary px-2 py-2 rounded-full cursor-pointer text-secondary"/>
+                <FaTwitter size={40} className="mx-2 bg-primary px-2 py-2 rounded-full cursor-pointer text-secondary"/>
+                <FaInstagram size={40} className="mx-2 bg-primary px-2 py-2 rounded-full cursor-pointer text-secondary"/>
             </div>
         </div>
 
-        <div className='text-text flex'>
+        <div className='text-text flex justify-around mt-10'>
             <div className='mx-5'>
                 <p className='text-title font-bold'>
                     Product

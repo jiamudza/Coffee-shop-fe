@@ -14,12 +14,11 @@
 }
 
 #drawer-true{
-    
+    @apply left-0
 }
 
-#drawer-false{
-    @apply hidden transition duration-300
+#drawer-false {
+    @apply -left-full
 }
-
 
 

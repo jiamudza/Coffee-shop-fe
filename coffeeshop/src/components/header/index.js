@@ -8,11 +8,12 @@ import userPlaceholder from '../../assets/images/user-placeholder.png'
 
 import {GoSearch} from 'react-icons/go'
 import {BsChatLeftText,BsChatRightText} from 'react-icons/bs'
-import {FaUserCircle} from 'react-icons/fa'
-import {RiLogoutCircleLine, RiSettings3Fill} from 'react-icons/ri'
+import {FaUserCircle, FaCoffee} from 'react-icons/fa'
+import {RiLogoutCircleLine, RiSettings3Fill, RiHistoryFill} from 'react-icons/ri'
 import {IoMdCart} from 'react-icons/io'
+import {AiFillHome} from 'react-icons/ai'
 
-const Header = () => {
+const Header = (props) => {
     const [notif, setNotif] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     const [isLogin, setIsLogin] = useState(true)
@@ -38,14 +39,10 @@ const Header = () => {
     }, [])
   return (
     <div className='font-rubik'>
-        <div className='flex pt-5 px-5 md:px-20 items-center justify-between'>
+        <div className={drawerOpen ? 'flex blur-sm md:blur-none pt-5 px-5 md:px-20 items-center justify-between' : 'flex  pt-5 px-5 md:px-20 items-center justify-between'}>
                 <button id={hamburgerMenu} onClick={() => {
-                    if(hamburgerMenu == "hamburger-menu") {
-                        setHamburgerMenu("hamburger-menu-active")
-                        setDrawerOpen(true)
-                    } else {
-                        setHamburgerMenu('hamburger-menu')
-                    }
+                    setHamburgerMenu('hamburger-menu-active')
+                    setDrawerOpen(true)
                 }} className='block md:hidden'>
                     <span  className='hamburger-line origin-bottom-left transition ease-in-out duration-300'></span>
                     <span  className='h-[2.5px] w-5 rounded-lg bg-text block'></span>
@@ -54,7 +51,7 @@ const Header = () => {
 
             <Link to="/" className='hidden md:flex items-center font-bold'>
                 <img src={brand} alt='logo-brand'/>
-                <p className='px-2'>Coffe Shop</p>
+                <p className='px-2'>Coffeejie</p>
             </Link>
 
             <div className='hidden md:block'>
@@ -81,7 +78,7 @@ const Header = () => {
                     <img onClick={() => setIsOpen((prev) => !prev)} src={userPlaceholder} className='w-10 rounded-full mx-5 cursor-pointer'/>
         
                     {isOpen && (
-                        <div className='absolute flex flex-col items-start right-20 top-20 shadow-2xl bg-transparent py-4 w-52 border-[1px] rounded-xl text-center text-text'>
+                        <div className='hidden absolute md:flex flex-col items-start right-20 top-20 shadow-2xl bg-transparent py-4 w-52 border-[1px] rounded-xl text-center text-text'>
                             <div onClick={() => navigate('/profile')} className='py-2 mx-12 flex items-center justify-around cursor-pointer'>
                                 <FaUserCircle size={25} className='text-text mx-3 ' />
                                 <p>Profile</p>
@@ -113,22 +110,86 @@ const Header = () => {
         }
         </div>
 
-        <div id={`drawer-${drawerOpen}`} className=' absolute top-0 w-[80vw] h-10'>
-            <div className='bg-secondary rounded-r-xl'>
-                <div onClick={() => {
-                    setDrawerOpen(!drawerOpen)
-                    setHamburgerMenu(!hamburgerMenu)
-                }} className='absolute right-0 cursor-pointer'>
-                    <span className='w-[30px] h-[5px] my-1 bg-text block rotate-45 rounded-lg origin-top-left'></span>
-                    <span className='w-[30px] h-[5px] bg-text block scale-0'></span>
-                    <span className='w-[30px] h-[5px] my-1 bg-text block -rotate-45 origin-bottom-left rounded-lg'></span>
+        <div id={`drawer-${drawerOpen}`} className='blur-none absolute transition-all ease-in-out duration-500 top-0 w-[80vw] h-[100vh] bg-white shadow-2xl md:hidden'>
+            
+            {isLogin?  <div className='flex flex-col items-start right-20 top-0 bg-transparent py-0 w-full text-center text-text'>
+
+<div className='bg-secondary w-full rounded-r-xl'>
+    <div onClick={() => {
+        setDrawerOpen(!drawerOpen)
+        setHamburgerMenu(!hamburgerMenu)
+    }} className='bg-red-500 rounded  right-0 absolute py-2 pr-0 pl-3 cursor-pointer'>
+        <span className='w-[30px] h-[5px] my-1 bg-text block rotate-45 rounded-lg origin-top-left'></span>
+        <span className='w-[30px] h-[5px] bg-text block scale-0'></span>
+        <span className='w-[30px] h-[5px] my-1 bg-text block -rotate-45 origin-bottom-left rounded-lg'></span>
+    </div>
+        <div onClick={() => navigate('/profile')} className='cursor-pointer flex flex-col items-center mx-20 py-5 text-white'>
+        <img className='w-28 h-28 rounded-full' src={userPlaceholder} />
+        <p className='font-bold py-3'>Ajimas</p>
+        <p>jiamudza@gmail.com</p>
+    </div>
+</div>
+
+{/* drawer down */}
+                <div onClick={() => navigate('/')} className='py-5 px-20 flex items-center justify-arounf cursor-pointer border-b'>
+                    <AiFillHome size={25} className='text-text mx-3 ' />
+                    <p>Home</p>
                 </div>
-                <div className='flex flex-col items-center py-5 text-white'>
-                    <img className='w-32 h-32 rounded-full' src={userPlaceholder} />
-                    <p className='font-bold py-3'>Ajimas</p>
-                    <p>jiamudza@gmail.com</p>
+                <div onClick={() => navigate('/product')} className='py-5 px-20 flex items-center justify-around cursor-pointer border-b'>
+                    <FaCoffee size={25} className='text-text mx-3' />
+                    <p>product</p>
                 </div>
+                <div onClick={() => navigate('/cart')} className='py-5 px-20 flex items-center justify-around cursor-pointer border-b'>
+                    <IoMdCart size={25} className='text-text mx-3' />
+                    <p>Your Cart</p>
+                </div>
+                <div onClick={() => navigate('/history')} className='py-5 px-20 flex items-center justify-around cursor-pointer'>
+                    <RiHistoryFill size={25} className='text-text mx-3' />
+                    <p>History</p>
+                </div>
+                <div onClick={handleLogout} className='py-3 absolute right-2 bottom-10  flex items-center justify-around cursor-pointer'>
+                    <RiLogoutCircleLine size={25} className='text-text mx-3' />
+                    <p>Logout</p>
+                </div>
+                
+            </div> :
+            <div>
+                <div className=' flex flex-col items-end w-full rounded-r-xl'>
+                    <div onClick={() => {
+                        setDrawerOpen(!drawerOpen)
+                        setHamburgerMenu(!hamburgerMenu)
+                    }} className='bg-red-500 rounded w-11 py-2 pr-0 pl-3 cursor-pointer'>
+                        <span className='w-[30px] h-[5px] my-1 bg-text block rotate-45 rounded-lg origin-top-left'></span>
+                        <span className='w-[30px] h-[5px] bg-text block scale-0'></span>
+                        <span className='w-[30px] h-[5px] my-1 bg-text block -rotate-45 origin-bottom-left rounded-lg'></span>
+                    </div>
+
+                    
+        
+                </div>
+                
+                <div onClick={() => navigate('/')} className='py-5 px-20 flex items-center justify-around cursor-pointer border-b'>
+                    <AiFillHome size={25} className='text-text mx-3 ' />
+                    <p>Home<span className='text-transparent'>....</span></p>
+                </div>
+                <div onClick={() => navigate('/product')} className='py-5 px-20 flex items-center justify-around cursor-pointer border-b'>
+                    <FaCoffee size={25} className='text-text mx-3' />
+                    <p>product</p>
+                </div>
+                <div onClick={() => navigate('/cart')} className='py-5 px-20 flex items-center justify-around cursor-pointer border-b'>
+                    <IoMdCart size={25} className='text-text mx-3' />
+                    <p>Your Cart</p>
+                </div>
+                <div onClick={() => navigate('/history')} className='py-5 px-20 flex items-center justify-around cursor-pointer'>
+                    <RiHistoryFill size={25} className='text-text mx-3' />
+                    <p>History</p>
+                </div>
+                <div className='absolute bottom-20 w-full cursor-pointer flex justify-around px-20'>
+                <Link to="/login" className='px-5 py-2 bg-Transparent mx-2 text-title font-bold rounded-3xl hover:bg-secondary hover:text-white ease-in duration-200'>Login</Link>
+                <Link to="/register" className='px-5 py-2 bg-primary text-secondary font-bold rounded-3xl hover:bg-secondary hover:text-white ease-in duration-200'>Sign Up</Link>
             </div>
+            </div>
+            }
             
         </div>
 
