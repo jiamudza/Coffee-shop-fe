@@ -68,10 +68,10 @@ const LandingPage = () => {
       <section className='text-text flex items-center justify-between mt-10 lg:mx-28 md:mt-28'>
         <img src={teamworkHero} className='hidden lg:block md:w-1/2'/>
         <div className='mx-auto'>
-          <h1 className='text-title font-bold text-3xl mb-2'>
-          We Provide Good Coffee and<br/> Healthy Meals
+          <h1 className='text-title text-center md:text-start font-bold text-3xl mb-2'>
+          We Provide Good Coffee and<br className='hidden lg:block'/> Healthy Meals
           </h1>
-          <p className='mb-2'>
+          <p className='mb-2 text-center md:text-start'>
           You can explore the menu that we provide with fun and<br /> have their own taste and make your day better.
           </p>
           <span className='flex items-center py-3'><BsCheckCircleFill color='#2FAB73' className='align-bottom w-5 h-5'/><p className='px-2 md:px-4'>High quality beans, because we only <br className='md:hidden' />provide the best</p></span>
