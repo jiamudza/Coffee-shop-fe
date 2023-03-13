@@ -78,7 +78,7 @@ const Header = (props) => {
                     <img onClick={() => setIsOpen((prev) => !prev)} src={userPlaceholder} className='w-10 rounded-full mx-5 cursor-pointer'/>
         
                     {isOpen && (
-                        <div className='hidden absolute md:flex flex-col items-start right-20 top-20 shadow-2xl bg-transparent py-4 w-52 border-[1px] rounded-xl text-center text-text'>
+                        <div className='hidden absolute md:flex flex-col items-start right-20 top-20 shadow-2xl bg-white py-4 w-52 border-[1px] rounded-xl text-center text-text'>
                             <div onClick={() => navigate('/profile')} className='py-2 mx-12 flex items-center justify-around cursor-pointer'>
                                 <FaUserCircle size={25} className='text-text mx-3 ' />
                                 <p>Profile</p>
