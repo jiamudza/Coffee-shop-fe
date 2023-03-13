@@ -74,8 +74,8 @@ const LandingPage = () => {
           <p className='mb-2'>
           You can explore the menu that we provide with fun and<br /> have their own taste and make your day better.
           </p>
-          <span className='flex items-center py-3'><BsCheckCircleFill size={20} color='#2FAB73' className='align-bottom'/><p className='px-2 md:px-4 md:whitespace-nowrap'>High quality beans</p></span>
-          <span className='flex items-center py-3'><BsCheckCircleFill size={20} color='#2FAB73' className='align-bottom'/><p className='px-2 md:px-4 md:whitespace-nowrap'>Healthy meals, you can request the ingredients</p></span>
+          <span className='flex items-center py-3'><BsCheckCircleFill size={18} color='#2FAB73' className='align-bottom'/><p className='px-2 md:px-4 md:whitespace-nowrap'>High quality beans</p></span>
+          <span className='flex items-center py-3'><BsCheckCircleFill size={20} color='#2FAB73' className='align-bottom'/><p className='px-2 md:px-4 md:whitespace-nowrap'>Healthy meals, you can request the<br className='md:hidden' /> ingredients</p></span>
           <span className='flex items-center py-3'><BsCheckCircleFill size={20} color='#2FAB73' className='align-bottom'/><p className='px-2 md:px-4 md:whitespace-nowrap'>Chat with our staff to get better experience for <br className='md:hidden' /> ordering</p></span>
           <span className='flex items-center py-3'><BsCheckCircleFill size={20} color='#2FAB73' className='align-bottom'/><p className='px-2 md:px-4 md:whitespace-nowrap'>Free member card with a minimum purchase of <br className='md:hidden' />IDR 200.000.</p></span>
         </div>
