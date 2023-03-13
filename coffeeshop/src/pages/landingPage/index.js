@@ -74,10 +74,10 @@ const LandingPage = () => {
           <p className='mb-2'>
           You can explore the menu that we provide with fun and<br /> have their own taste and make your day better.
           </p>
-          <span className='flex items-center py-3'><BsCheckCircleFill color='#2FAB73' className='align-bottom w-5 h-5'/><p className='px-2 md:px-4'>High quality beansm because we only provide the best</p></span>
-          <span className='flex items-center py-3'><BsCheckCircleFill color='#2FAB73' className='align-bottom w-5 h-5'/><p className='px-2 md:px-4'>Healthy meals, you can request the ingredients</p></span>
-          <span className='flex items-center py-3'><BsCheckCircleFill color='#2FAB73' className='align-bottom w-5 h-5'/><p className='px-2 md:px-4'>Chat with our staff to get better experience for <br className='md:hidden' /> ordering</p></span>
-          <span className='flex items-center py-3'><BsCheckCircleFill  color='#2FAB73' className='align-bottom w-5 h-5'/><p className='px-2 md:px-4'>Free member card with a minimum purchase of <br className='md:hidden' />IDR 200.000.</p></span>
+          <span className='flex items-center py-3'><BsCheckCircleFill color='#2FAB73' className='align-bottom w-5 h-5'/><p className='px-2 md:px-4'>High quality beans, because we only <br className='md:hidden' />provide the best</p></span>
+          <span className='flex items-center py-3'><BsCheckCircleFill color='#2FAB73' className='align-bottom w-5 h-5'/><p className='px-2 md:px-4'>Healthy meals, you can request the <br className='md:hidden' />ingredients</p></span>
+          <span className='flex items-center py-3'><BsCheckCircleFill color='#2FAB73' className='align-bottom w-5 h-5'/><p className='px-2 md:px-4'>Chat with our staff to get better <br className='md:hidden' />experience for ordering</p></span>
+          <span className='flex items-center py-3'><BsCheckCircleFill  color='#2FAB73' className='align-bottom w-5 h-5'/><p className='px-2 md:px-4'>Free member card with a minimum <br className='md:hidden' />purchase of IDR 200.000.</p></span>
         </div>
       </section >
       {/* favorite */}

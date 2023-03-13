@@ -64,14 +64,14 @@ const Header = (props) => {
             {isLogin ? 
                 <div className='flex items-center'>
                 <div className='flex items-center md:bg-pale py-2 md:px-4 rounded-3xl mx-5'>
-                    <GoSearch size={25} />
+                    <GoSearch size={25} className='text-text'/>
                     <input type='text' placeholder='Search' className='hidden md:block mx-3 w-28 bg-pale focus:outline-none' />
                 </div>
         
                 <div className='flex cursor-pointer'>
                     {notif ? <div className='w-2 h-2 bg-red-600 rounded-full absolute mx-3'></div> : <div></div>}
-                    <BsChatLeftText size={25} className='text-text mx-4 bg-white'/>
-                    <BsChatRightText size={25} className='text-text mx-5 mt-[2px] absolute -z-10'/>
+                    <BsChatLeftText size={25} className='text-text mx-4 bg-transparent'/>
+                    {/* <BsChatRightText size={25} className='text-text mx-5 mt-[2px] absolute -z-10'/> */}
                 </div>
         
                 <div>
