@@ -54,18 +54,18 @@ const Header = () => {
                 <button id={hamburgerMenu} onClick={() => {
                     setHamburgerMenu('hamburger-menu-active')
                     setDrawerOpen(true)
-                }} className='block md:hidden'>
+                }} className='block lg:hidden'>
                     <span  className='hamburger-line origin-bottom-left transition ease-in-out duration-300'></span>
                     <span  className='h-[2.5px] w-5 rounded-lg bg-text block'></span>
                     <span  className='hamburger-line origin-top-left transition ease-in-out duration-300'></span>
                 </button>
 
-            <Link to="/" className='hidden md:flex items-center font-bold'>
+            <Link to="/" className='hidden lg:flex items-center font-bold'>
                 <img src={brand} alt='logo-brand'/>
                 <p className='px-2'>Coffeejie</p>
             </Link>
 
-            <div className='hidden md:block md:mx-20'>
+            <div className='hidden lg:block md:mx-20 whitespace-nowrap'>
                 <Link to='/' onClick={handleNav} className={active === '/' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Home</Link>
                 <Link to='/product' onClick={handleNav} className={active === '/product' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Product</Link>
                 <Link to='/cart' onClick={handleNav} className={active === '/cart' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Your Cart</Link>
@@ -121,7 +121,7 @@ const Header = () => {
         }
         </div>
 
-        <div id={`drawer-${drawerOpen}`} className='blur-none absolute transition-all ease-in-out duration-500 top-0 w-[80vw] h-[100vh] bg-white shadow-2xl md:hidden'>
+        <div id={`drawer-${drawerOpen}`} className='blur-none absolute transition-all ease-in-out duration-500 top-0 w-[80vw] h-[100vh] bg-white shadow-2xl lg:hidden'>
             
             {isLogin?  <div className='flex flex-col items-start right-20 top-0 bg-transparent py-0 w-full text-center text-text'>
 
