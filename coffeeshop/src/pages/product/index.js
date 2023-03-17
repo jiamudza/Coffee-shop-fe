@@ -15,8 +15,8 @@ const Product = () => {
   }
 
   return (
-    <div>
-        <div>
+    <div className='relative'>
+        <div className='sticky top-0'>
             <Header />
         </div>
         <section className='border-t text-center px-10 lg:flex mt-5'>
