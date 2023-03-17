@@ -19,7 +19,7 @@ const Product = () => {
         <div className='sticky top-0 z-20'>
             <Header />
         </div>
-        <section className='border-t text-center px-10 lg:flex mt-5'>
+        <section className='border-t text-center px-5 md:px-10 lg:flex mt-5'>
             <aside className='md:2-[25vw] md:pt-5'>
               <h2 className='font-bold text-xl text-secondary'>
                 Promo Today
