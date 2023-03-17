@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React from 'react'
 import Footer from '../../components/footer';
 import Header from '../../components/header';
+import Rating from '../../components/customers_rating';
 
 import {HiUser, HiLocationMarker} from 'react-icons/hi'
-import {AiOutlineCheck, AiOutlineHeart} from 'react-icons/ai'
+import {AiOutlineHeart} from 'react-icons/ai'
 import { BsCheckCircleFill } from 'react-icons/bs';
 
 // assets
 import teamworkHero from '../../assets/images/teamwork-hero.png'
-import product from '../../assets/images/product-placeholder.jpg'
+import FavoriteMenu from '../../components/favorite_menu';
+import map from '../../assets/images/Huge-Global.svg'
+import netflix from '../../assets/images/netflix-dead-icon.svg'
+import reddit from '../../assets/images/reddit.svg'
+import amazon from '../../assets/images/amazon.svg'
+import discord from '../../assets/images/discord.svg'
+import spotify from '../../assets/images/spotify.svg'
 
 const LandingPage = () => {
 
   return (
     <div  className='relative h-[200vh]'>
-      <div className='sticky top-0'>
+      <div className='sticky top-0 z-20'>
         <Header />
       </div>
       <div className='px-5 md:px-0'>
         <section className='bg-jumbotron text-white mt-5 px-10 py-10 font-bold'>
-          <div>
+          <div className='mt-10 md:mt-0'>
             <h1 className='text-3xl'>
             Start Your Day with <br className='hidden lg:block' />Coffee and Good Meals
             </h1>
@@ -68,7 +74,7 @@ const LandingPage = () => {
       </div>
           {/* banner sessions */}
       <section className='text-text flex items-center justify-between mt-10 lg:mx-28 md:mt-28'>
-        <img src={teamworkHero} className='hidden lg:block md:w-1/2'/>
+        <img src={teamworkHero} alt='banner-hero' className='hidden lg:block md:w-1/2'/>
         <div className='mx-auto'>
           <h1 className='text-title text-center md:text-start font-bold text-3xl mb-2'>
           We Provide Good Coffee and<br className='hidden lg:block'/> Healthy Meals
@@ -83,99 +89,59 @@ const LandingPage = () => {
         </div>
       </section >
       {/* favorite */}
-      <section className='mt-10'>
-        <h2 className='text-title font-bold text-4xl text-center'>
-        Here is People’s Favorite
+      <div className='mt-28'>
+      <h2 className='text-title font-bold text-4xl text-center'>
+        Here is People's Favorite
         </h2>
-        <p className='mt-5 text-text text-center'>Let’s choose and have a bit taste of poeple’s favorite. It might be yours too!</p>
-
-        <div className='mt-28 flex items-center justify-evenly'>
-            <div className='flex flex-col items-center border-2 relative px-5 -z-10 border-pale rounded-lg w-64 h-[70vh]'>
-              <img src={product} className='rounded-full absolute -top-16'/>
-              <p className='font-bold mt-20'>Hazelnut Latte</p>
-              <div className=''>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>HazelnutSyrup</p>
-                </span>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>Wanilla Whipped Cream</p>
-                </span>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>Ice/Hot</p>
-                </span>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>Sliced Banana on Top</p>
-                </span>
-                </div>
-                <div className='flex flex-col items-center absolute bottom-3'>
-                  <p className='text-title font-bold'>IDR 25.000</p>
-                  <button className='px-10 py-3 rounded-3xl mt-3 bg-primary font-bold text-secondary'>Select</button>
-                </div>
-            </div>
-
-
-            <div className='hidden md:flex flex-col items-center border-2 relative px-5 -z-10 border-pale rounded-lg w-64 h-[70vh]'>
-              <img src={product} className='rounded-full absolute -top-16'/>
-              <p className='font-bold mt-20'>Hazelnut Latte</p>
-              <div className=''>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>HazelnutSyrup</p>
-                </span>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>Wanilla Whipped Cream</p>
-                </span>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>Ice/Hot</p>
-                </span>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>Sliced Banana on Top</p>
-                </span>
-                </div>
-                <div className='flex flex-col items-center absolute bottom-3'>
-                  <p className='text-title font-bold'>IDR 25.000</p>
-                  <button className='px-10 py-3 rounded-3xl mt-3 bg-primary font-bold text-secondary'>Select</button>
-                </div>
-
-
-            </div>
-            <div className='hidden md:flex flex-col items-center border-2 relative px-5 -z-10 border-pale rounded-lg w-64 h-[70vh]'>
-              <img src={product} className='rounded-full absolute -top-16'/>
-              <p className='font-bold mt-20'>Hazelnut Latte</p>
-              <div className=''>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>HazelnutSyrup</p>
-                </span>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>Wanilla Whipped Cream</p>
-                </span>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>Ice/Hot</p>
-                </span>
-                <span className='flex items-center py-3 text-text'>
-                <AiOutlineCheck color='#2FAB73' className='h-5 w-5 font-bold' />
-                <p className='ml-4'>Sliced Banana on Top</p>
-                </span>
-                </div>
-                <div className='flex flex-col items-center absolute bottom-3'>
-                  <p className='text-title font-bold'>IDR 25.000</p>
-                  <button className='px-10 py-3 rounded-3xl mt-3 bg-primary font-bold text-secondary'>Select</button>
-                </div>
-            </div>
-        </div>
+        <p className='mt-5 text-text text-center'>Let's choose and have a bit taste of poeple's favorite. It might be yours too!</p>
+      </div>
+      <section className='flex flex-col md:flex-row items-center justify-around'>
+        {[1,2,3].map(item => {
+          return <FavoriteMenu />
+        })}
+      </section>
+      <section className='mt-28'> 
+        <h1 className='font-bold text-4xl text-center text-title'>
+        Visit Our Store in the <br />Spot on the Map Below
+        </h1>
+        <p className='text-text text-center mt-5'>
+        See our store in every city on the spot and spen your good day there. See you soon!
+        </p>
+        <img src={map} alt='map' className='mt-14 mx-auto onject-contain'/>
       </section>
       {/* footer */}
       </div>
+      <section>
+        <h1 className='font-bold text-4xl text-title text-center'>
+          Our Partner
+        </h1>
+        <div className='flex flex-row flex-wrap items-center justify-around'>
+          <img src={netflix} alt='netflix' className='object-contain'/>
+          <img src={reddit} alt='reddit' className='object-contain'/>
+          <img src={amazon} alt='amazon' className='object-contain'/>
+          <img src={discord} alt='discord' className='object-contain'/>
+          <img src={spotify} alt='spotify' className='object-contain'/>
+
+        </div>
+
+      </section>
+
+
+      <section className='relative'>
+      <h1 className='font-bold text-4xl text-center text-title'>
+         Loved by Thousand of<br />Happy Custommers
+        </h1>
+        <p className='text-text text-center mt-5'>
+        These are the stories of our customers who have visited us with great pleasure.
+        </p>
+
+        <div className='relative w-full h-[30vh] bg-primary'>
+          <div className='w-[90vw] h-[30vh] bg-secondary absolute right-0'>
+            <Rating />
+          </div>
+        </div>
+      </section>
+
       <div className='pt-20'>
       <Footer />
       </div>

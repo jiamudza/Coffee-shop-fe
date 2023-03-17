@@ -1,9 +1,8 @@
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const PrivateRoutes = (props) => {
-    const navigate = useNavigate()
         if(!localStorage.getItem('@isLogin')) {
-            return navigate('/login')
+            return <Navigate to='/login' />
         } else {
             return props.children
         }  
