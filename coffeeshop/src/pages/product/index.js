@@ -16,7 +16,7 @@ const Product = () => {
 
   return (
     <div className='relative'>
-        <div className='sticky top-0'>
+        <div className='sticky top-0 z-20'>
             <Header />
         </div>
         <section className='border-t text-center px-10 lg:flex mt-5'>
@@ -38,12 +38,12 @@ const Product = () => {
                   <li onClick={handleCategory}  className={(active === 'Add-on'? 'font-bold text-center text-secondary border-b-2 border-secondary' : 'text-center text-secondary') + " cursor-pointer"}>Add-on</li>
                 </ul>
               </div>
-              <div className='flex flex-wrap place-content-center gap-x-3 md:gap-x-10 gap-y-5 my-10 mx-auto px-0 md:px-10 '>
+              <div className='flex flex-wrap place-content-center gap-x-2 md:gap-x-10 gap-y-5 my-10 mx-auto px-0 md:px-10 '>
                 {[1,2,3,4,5,6,7,8,9,10,11,12].map(item => {
-                  return <div className='w-28 md:w-36 flex flex-col items-center shadow-lg p-2 cursor-pointer active:scale-110 ease-in-out duration-200 rounded-2xl'>
+                  return <div className='w-24 h-40 md:w-36 md:h-[35vh] flex flex-col items-center shadow-lg p-2 relative cursor-pointer active:scale-110 ease-in-out duration-200 rounded-2xl'>
                     <img src={veggie} alt='menu' className='h-10 w-10 md:h-24 md:w-24 shadow-2xl rounded-full'/>
                     <p className='text-sm md:text-xl font-bold'>Veggie Tomato</p>
-                    <p className='font-bold text-sm md:text-lg text-secondary'>IDR 34.000</p>
+                    <p className='font-bold text-sm md:text-lg text-secondary absolute bottom-3 md:bottom-6'>IDR 34.000</p>
                   </div>
                   
                 })}
