@@ -7,19 +7,28 @@ import userPlaceholder from '../../assets/images/user-placeholder.png'
 
 
 import {GoSearch} from 'react-icons/go'
-import {BsChatLeftText,BsChatRightText} from 'react-icons/bs'
+import {BsChatLeftText} from 'react-icons/bs'
 import {FaUserCircle, FaCoffee} from 'react-icons/fa'
 import {RiLogoutCircleLine, RiSettings3Fill, RiHistoryFill} from 'react-icons/ri'
 import {IoMdCart} from 'react-icons/io'
 import {AiFillHome} from 'react-icons/ai'
 import {HiOutlineArrowLeft} from 'react-icons/hi'
 
-const Header = (props) => {
+const Header = () => {
     const [notif, setNotif] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
     const [isLogin, setIsLogin] = useState(true)
     const [hamburgerMenu, setHamburgerMenu] = useState('hamburger-menu')
     const [drawerOpen, setDrawerOpen] = useState(false)
+    const [active, setActive] = useState(`${window.location.pathname}`)
+
+    const handleNav = (e) => {
+        
+
+        setActive(window.location.pathname)
+    }
+
+    
 
     const navigate = useNavigate()
 
@@ -30,6 +39,7 @@ const Header = (props) => {
 
         setIsLogin(false)
     }
+    console.log(active)
 
     useEffect(() => {
         if(localStorage.getItem('@isLogin')) {
@@ -55,18 +65,18 @@ const Header = (props) => {
                 <p className='px-2'>Coffeejie</p>
             </Link>
 
-            <div className='hidden md:block'>
-                <Link to='/' className='text-secondary md:px-5 font-bold '>Home</Link>
-                <Link to='/product' className='text-text md:px-5'>Product</Link>
-                <Link to='/cart' className='text-text md:px-5'>Your Cart</Link>
-                <Link to='/history' className='text-text md:px-5'>History</Link>
+            <div className='hidden md:block md:mx-20'>
+                <Link to='/' onClick={handleNav} className={active === '/' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Home</Link>
+                <Link to='/product' onClick={handleNav} className={active === '/product' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Product</Link>
+                <Link to='/cart' onClick={handleNav} className={active === '/cart' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Your Cart</Link>
+                <Link to='/history' onClick={handleNav} className={active === '/history' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>History</Link>
             </div>
 
             {isLogin ? 
                 <div className='flex items-center'>
-                <div className='flex items-center md:bg-pale py-2 md:px-4 rounded-3xl mx-5'>
+                <div className='flex items-center lg:bg-pale py-2 lg:px-4 rounded-3xl mx-5'>
                     <GoSearch size={25} className='text-text'/>
-                    <input type='text' placeholder='Search' className='hidden md:block mx-3 w-28 bg-pale focus:outline-none' />
+                    <input type='text' placeholder='Search' className='hidden lg:block mx-3 w-28 bg-pale focus:outline-none' />
                 </div>
         
                 <div className='flex cursor-pointer'>
@@ -76,7 +86,7 @@ const Header = (props) => {
                 </div>
         
                 <div>
-                    <img onClick={() => setIsOpen((prev) => !prev)} src={userPlaceholder} className='w-10 rounded-full mx-5 cursor-pointer'/>
+                    <img onClick={() => setIsOpen((prev) => !prev)} src={userPlaceholder} className='w-10 rounded-full mx-5 cursor-pointer' alt='user-profile'/>
         
                     {isOpen && (
                         <div className='hidden absolute md:flex flex-col items-start right-20 top-20 shadow-2xl bg-white py-4 w-52 border-[1px] rounded-xl text-center text-text'>
@@ -123,7 +133,7 @@ const Header = (props) => {
         <HiOutlineArrowLeft color='white' size={30}/>
     </div>
         <div onClick={() => navigate('/profile')} className='cursor-pointer flex flex-col items-center mx-20 py-5 text-white'>
-        <img className='w-28 h-28 rounded-full' src={userPlaceholder} />
+        <img className='w-28 h-28 rounded-full' src={userPlaceholder} alt="user-profile"/>
         <p className='font-bold py-3'>Ajimas</p>
         <p>jiamudza@gmail.com</p>
     </div>
@@ -160,9 +170,6 @@ const Header = (props) => {
                     }} className='rounded py-4 pr-0 mx-4 cursor-pointer'>
                         <HiOutlineArrowLeft className='text-secondary' size={30}/>
                     </div>
-
-                    
-        
                 </div>
                 
                 <div onClick={() => navigate('/')} className='py-5 px-20 flex items-center justify-around cursor-pointer border-b'>

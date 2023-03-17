@@ -20,7 +20,7 @@ import spotify from '../../assets/images/spotify.svg'
 const LandingPage = () => {
 
   return (
-    <div  className='relative h-[200vh]'>
+    <div  className='relative'>
       <div className='sticky top-0 z-20'>
         <Header />
       </div>
@@ -111,7 +111,7 @@ const LandingPage = () => {
       </section>
       {/* footer */}
       </div>
-      <section>
+      <section className='mt-10'>
         <h1 className='font-bold text-4xl text-title text-center'>
           Our Partner
         </h1>

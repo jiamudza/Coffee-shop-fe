@@ -13,7 +13,8 @@ module.exports = {
         secondary: "#6A4029",
         title: "#0B132A",
         text: "#4F5665",
-        pale: "#EFEEEE"
+        pale: "#EFEEEE",
+        xpale: "#BABABA"
       },
       backgroundImage: {
         auth: "url('../src/assets/images/auth-image.jpg')",

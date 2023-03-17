@@ -16,3 +16,6 @@ code {
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,500&display=swap');
+.button-primary{
+  @apply bg-primary text-secondary hover:bg-secondary hover:text-white active:scale-90 ease-in-out duration-150;
+}
