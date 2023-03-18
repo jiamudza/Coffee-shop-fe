@@ -6,6 +6,7 @@ import RestrictedRoute from "./routes/restrictedRoutes";
 import Restricted from "./pages/restrictedPage";
 import Product from "./pages/product";
 import ProductDetail from "./pages/productDetail";
+import Payment from "./pages/payment";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/restricted" element={<PrivateRoutes><Restricted /></PrivateRoutes>} />
         <Route path="/login" element={<RestrictedRoute><Login /></RestrictedRoute>} />
       </Routes>

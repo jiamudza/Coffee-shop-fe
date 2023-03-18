@@ -67,16 +67,16 @@ const Header = () => {
 
             <div className='hidden lg:block md:mx-20 whitespace-nowrap'>
                 <Link to='/' onClick={handleNav} className={active === '/' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Home</Link>
-                <Link to='/product' onClick={handleNav} className={active === '/product' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Product</Link>
-                <Link to='/cart' onClick={handleNav} className={active === '/cart' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Your Cart</Link>
+                <Link to='/product' onClick={handleNav} className={active === '/product:id' || active === '/product' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Product</Link>
+                <Link to='/payment' onClick={handleNav} className={active === '/payment' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>Your Cart</Link>
                 <Link to='/history' onClick={handleNav} className={active === '/history' ? 'font-bold text-secondary lg:px-5' : 'text-text md:px-5'}>History</Link>
             </div>
 
             {isLogin ? 
                 <div className='flex items-center'>
-                <div className='flex items-center lg:bg-pale py-2 lg:px-4 rounded-3xl mx-5'>
+                <div className='flex items-center lg:bg-pale lg:px-4 rounded-3xl mx-5'>
                     <GoSearch size={25} className='text-text'/>
-                    <input type='text' placeholder='Search' className='hidden lg:block mx-3 w-28 bg-pale focus:outline-none' />
+                    <input type='text' placeholder='Search' className='outline-offset-0 hidden lg:block mx-2 w-28 bg-pale border-none outline-none active:outline-none focus:outline-none' />
                 </div>
         
                 <div className='flex cursor-pointer'>
