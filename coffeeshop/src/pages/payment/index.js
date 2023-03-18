@@ -87,7 +87,7 @@ const Payment = () => {
                     <button className='py-2 mx-5 px-28 lg:w-[26vw] mt-10  text-white bg-secondary border-2 border-transparent font-bold rounded-lg hover:text-secondary hover:border-transparent hover:bg-primary active:scale-90 ease-in-out duration-200'>Confirm and Pay</button>
             </section>
         </main>
-        <div className='lg:mt-20 pt-20'>
+        <div className='lg:mt-20 pt-10'>
             <Footer />
         </div>
     </div>

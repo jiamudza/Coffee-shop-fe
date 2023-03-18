@@ -148,7 +148,7 @@ const Header = () => {
                     <FaCoffee size={25} className='text-text mx-3' />
                     <p>product</p>
                 </div>
-                <div onClick={() => navigate('/cart')} className='py-5 px-20 flex items-center justify-around cursor-pointer border-b'>
+                <div onClick={() => navigate('/payment')} className='py-5 px-20 flex items-center justify-around cursor-pointer border-b'>
                     <IoMdCart size={25} className='text-text mx-3' />
                     <p>Your Cart</p>
                 </div>
