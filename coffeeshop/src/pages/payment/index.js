@@ -10,8 +10,8 @@ import {TbTruckDelivery} from 'react-icons/tb'
 
 const Payment = () => {
   return (
-    <div className='realtive overflow-x-hidden'>
-        <div className='sticky z-20 top-0'>
+    <div className='relative overflow-x-hidden'>
+        <div className='sticky top-0'>
             <Header />
         </div>
         <main className='bg-payment bg-auto lg:bg-cover pt-24 pb-28 lg:flex'>
@@ -19,7 +19,7 @@ const Payment = () => {
                 <h2 className='text-3xl text-center text-white drop-shadow-[6px_1px_2px_#000] shadow-black font-bold'>Checkout your item now!</h2>
                 <div className='lg:w-[20vw] mx-5 lg:mx-auto px-5 py-5 bg-white mt-10 shadow-xl rounded-xl'>
                     <div className=' border-b py-3'>
-                        <p className='mb-10 font-bold text-lg text-secondary text-center'> Order Summary</p>
+                        <p className='mb-10 font-bold text-lg text-secondary text-center'>Order Summary</p>
                         {[1,2].map(item => {
                             return <div className='flex justify-between items-center gap-2 mt-3'>
                                 <img src={creamyLatte}  className='h-14 w-14 rounded-lg'/>

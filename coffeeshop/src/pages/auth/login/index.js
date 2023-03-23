@@ -1,5 +1,6 @@
 // utils
-import React from 'react'
+import axios from 'axios'
+import React,{ useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 
@@ -14,13 +15,48 @@ import Footer from '../../../components/footer'
 
 const Login = () => {
   const navigate = useNavigate()
+
+
+
+  const [formLogin, setFormLogin] = useState({
+    email: '',
+    password: ''
+  })
+
+  const [loginError, setLoginError] = useState({
+    status: false
+  })
+
   
   const handleLogin = (e) => {
     e.preventDefault();
 
-    localStorage.setItem('@isLogin', "tes")
-    return navigate(-1)
+    axios({
+      url: `https://coffeeshop-be.adaptable.app/api/v1/auth/login`,
+      method: 'POST',
+      data: {
+        email: formLogin.email,
+        password: formLogin.password
+      }
+    })
+    .then(response => {
+      localStorage.setItem('@isLogin', JSON.stringify(response.data.data))
+      navigate(-1)
+    })
+    .catch(err => {
+      setLoginError({
+        ...loginError,
+        status: true,
+        error: `${err.response.data}`
+      })
+    })
+
+    if(localStorage.getItem('@isLogin')) {
+      navigate(-1)
+    }
   }
+
+ 
 
   return (
     <>
@@ -46,9 +82,19 @@ const Login = () => {
 
             <form className='font-bold mt-52 md:mt-14 md:font-[500] md:px-20' >
               <label className='hidden md:block font-bold text-text'>Email address :</label>
-              <input type="email" placeholder='Enter your email address' className='bg-transparent placeholder-white border-b w-full lg:bg-white md:placeholder-text md:border md:py-4 md:px-4 md:mb-5 md:mt-2 md:rounded-xl' />
+              <input onChange={(e) => {
+                setFormLogin({
+                  ...formLogin,
+                  email: e.target.value
+                })
+              }} type="email" placeholder='Enter your email address' className='bg-transparent placeholder-white border-b w-full lg:bg-white md:placeholder-text md:border md:py-4 md:px-4 md:mb-5 md:mt-2 md:rounded-xl' />
               <label className='hidden md:block font-bold text-text'>Password :</label>
-              <input type="password" placeholder='Enter your password' className='bg-transparent placeholder-white mt-5 border-b w-full mb-4 md:bg-white md:placeholder-text md:border md:py-4 md:px-4 md:mt-2 md:rounded-xl' />
+              <input onChange={(e) => {
+                setFormLogin({
+                  ...formLogin,
+                  password: e.target.value
+                })
+              }} type="password" placeholder='Enter your password' className='bg-transparent placeholder-white mt-5 border-b w-full mb-4 md:bg-white md:placeholder-text md:border md:py-4 md:px-4 md:mt-2 md:rounded-xl' />
 
               <Link to="/forgot-password" className='text-sm border-b md:border-secondary md:border-b-2 md:text-secondary md:font-bold '>Forgot password?</Link>
 
