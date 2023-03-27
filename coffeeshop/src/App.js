@@ -7,6 +7,8 @@ import Restricted from "./pages/restrictedPage";
 import Product from "./pages/product";
 import ProductDetail from "./pages/productDetail";
 import Payment from "./pages/payment";
+import Register from "./pages/auth/register";
+import History from "./pages/history";
 
 function App() {
   return (
@@ -15,9 +17,11 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment" element={<PrivateRoutes><Payment /></PrivateRoutes>} />
         <Route path="/restricted" element={<PrivateRoutes><Restricted /></PrivateRoutes>} />
+        <Route path="/history" element={<PrivateRoutes><History /></PrivateRoutes>} />
         <Route path="/login" element={<RestrictedRoute><Login /></RestrictedRoute>} />
+        <Route path="/register" element={<RestrictedRoute><Register /></RestrictedRoute>} />
       </Routes>
     </BrowserRouter>
   );

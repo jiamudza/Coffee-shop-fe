@@ -105,7 +105,7 @@ const Header = () => {
             to="/product"
             onClick={handleNav}
             className={
-              active === "/product:id" || active === "/product"
+              active.includes('product')
                 ? "font-bold text-secondary lg:px-5"
                 : "text-text md:px-5"
             }
