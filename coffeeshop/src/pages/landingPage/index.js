@@ -16,8 +16,10 @@ import reddit from '../../assets/images/reddit.svg'
 import amazon from '../../assets/images/amazon.svg'
 import discord from '../../assets/images/discord.svg'
 import spotify from '../../assets/images/spotify.svg'
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
+  const navigate = useNavigate()
 
   return (
     <div  className='relative'>
@@ -33,7 +35,7 @@ const LandingPage = () => {
             <p className='mt-5'>
             We provide high quality beans, good taste, and healthy <br className='hidden lg:block' /> meals made by love just for you. Start your day with us<br className='hidden lg:block' /> for a bigger smile!            </p>
           </div>
-          <button className='bg-primary text-secondary px-4 py-2 mt-5 md:mb-20 rounded-lg'>
+          <button onClick={() => navigate('/product')} className='bg-primary text-secondary px-4 py-2 mt-5 md:mb-20 rounded-lg'>
             Get Started
           </button>
         </section>

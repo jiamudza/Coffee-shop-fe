@@ -89,7 +89,7 @@ const ProductDetail = () => {
           <img
             src={menuDetail.data.product_image}
             alt="menu"
-            className="h-40 w-40 mt-10 mx-auto rounded-full lg:mt-5"
+            className="h-40 w-40 mt-10 mx-auto rounded-full lg:mt-5 object-cover"
           />
           <div className="lg:w-[25vw] mt-5 rounded-xl shadow-xl px-3 py-5">
             <p className="text-lg font-bold text-center">Delivery and Time</p>
@@ -228,7 +228,7 @@ const ProductDetail = () => {
             <img
               src={menuDetail.data.product_image}
               alt="menu"
-              className="h-16 w-16 rounded-full mr-5"
+              className="h-16 w-16 rounded-full mr-5 object-cover"
             />
             <div className="flex flex-col align-top mr-28">
               <p className="font-bold text-lg">

@@ -4,7 +4,8 @@ import axios from "axios";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
-import veggie from "../../assets/images/veggie-tomato.svg";
+import {BiChevronLeft, BiChevronRight} from 'react-icons/bi'
+
 import { useNavigate } from "react-router-dom";
 
 const Product = () => {
@@ -14,20 +15,23 @@ const Product = () => {
     data: [],
   });
   const [filter, setFilter] = useState("");
+  const [page, setPage] = useState("1")
   const [addButton, setAddButton] = useState(false);
 
   const handleCategory = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     setActive(e.target.innerText);
     if (e.target.innerText === "Favorite & Promo") {
       setFilter("");
+      setPage("1")
     } else {
       setFilter(e.target.innerText);
+      setPage("1")
     }
   };
 
-  const [userRole, setUserRole] = useState();
+  const [userRole, setUserRole] = useState('user');
 
   useEffect(() => {
     if(localStorage.getItem('@isLogin')) {
@@ -40,7 +44,7 @@ const Product = () => {
   useEffect(() => {
     axios
       .get(
-        `https://coffeeshop-be.adaptable.app/api/v1/product?filter=${filter}`
+        `https://coffeeshop-be.adaptable.app/api/v1/product?filter=${filter}&page=${page}`
       )
       .then((result) => {
         setMenu({
@@ -51,7 +55,7 @@ const Product = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [filter, menu]);
+  }, [filter, page]);
 
   const deleteProduct = async (e) => {
     const product_id = await e.target.attributes.value.value;
@@ -176,7 +180,7 @@ const Product = () => {
                     <img
                       src={item.product_image}
                       alt="menu"
-                      className="h-10 w-10 md:h-24 md:w-24 shadow-2xl rounded-full"
+                      className="h-10 w-10 md:h-24 md:w-24 shadow-2xl rounded-full object-cover"
                     />
                     <p className="text-sm md:text-xl font-bold">
                       {item.product_name}
@@ -202,7 +206,23 @@ const Product = () => {
               );
             })}
           </div>
-          <div>
+          <div className="flex items-center justify-center gap-4">
+            <span onClick={() => {
+              if(parseInt(page) === 1) {
+                setPage("1")
+              } else {
+                setPage(parseInt(page) - 1)
+              }
+            }}><BiChevronLeft size={40} className="cursor-pointer text-white bg-secondary text-4xl hover:bg-white hover:text-secondary ease-in-out duration-100 outline outline-transparent hover:outline hover:outline-secondary active:scale-95"/></span>
+            <span className="font-bold text-secondary">{page}</span>
+            <span onClick={() => {
+              setPage(parseInt(page) + 1)
+            }}><BiChevronRight size={40} className="cursor-pointer text-white bg-secondary text-4xl hover:bg-white hover:text-secondary ease-in-out duration-100 outline outline-transparent hover:outline hover:outline-secondary active:scale-95"/></span>
+          </div>
+          <p className="text-secondary text-start px-10">
+            *the price has been cutted by discount appears
+          </p>
+          <div className="mt-5">
             <button
               onClick={() => {
                 setAddButton(!addButton);
@@ -217,7 +237,7 @@ const Product = () => {
             <form
               className={
                 (addButton === true ? "block" : "hidden") +
-                " w-72 mt-5 absolute top-32 left-0 right-0 mx-auto bg-white shadow-2xl p-5 rounded-lg z-10"
+                " w-72 mt-5 fixed top-20 left-0 right-0 mx-auto bg-white shadow-2xl p-5 rounded-lg z-10"
               }
             >
               <label className="text-secondary font-bold block">
@@ -285,7 +305,8 @@ const Product = () => {
                     e.preventDefault()
 
                     setAddButton(false)
-                  }}
+                  }} 
+                  type='reset'
                   className="px-5 mt-5 py-2 bg-white text-red-600 font-bold rounded-md hover:scale-105 active:scale-95 ease-in-out duration-100"
                 >
                   cancel
@@ -299,9 +320,6 @@ const Product = () => {
               </div>
             </form>
           </div>
-          <p className="text-secondary text-start px-10">
-            *the price has been cutted by discount appears
-          </p>
         </main>
       </section>
       <div className="mt-10 pt-10">

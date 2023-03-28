@@ -32,13 +32,16 @@ const History = () => {
             <p className='font-bold text-2xl'>Let's see what you have bought</p>
             <p>Select item to delete</p>
           </section>
-          <section className='flex items-center flex-wrap gap-10 justify-center mt-10'>
+          <section className='flex items-center flex-wrap gap-x-10 gap-y-2 justify-center mt-10'>
             {history.data.map(item => {
               return <div key={item.history_id} className='flex w-72 items-center gap-4 bg-white shadow-2xl p-5 rounded-lg'>
               <img src={item.product_image} className='h-20 w-20 rounded-full' />
               <div className='text-secondary'>
                 <p className='text-title font-bold text-xl'>{item.product_name}</p>
-                <p>{item.total}</p>
+                <p>IDR{" "}
+                      {new Intl.NumberFormat("ja-JP", {
+                        style: "decimal",
+                      }).format(item.total)}</p>
                 <p>Delivered</p>
               </div>
             </div>
