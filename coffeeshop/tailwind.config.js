@@ -19,7 +19,8 @@ module.exports = {
       backgroundImage: {
         auth: "url('../src/assets/images/auth-image.jpg')",
         jumbotron: "url('../src/assets/images/jumbotron.jpg')",
-        payment: "url('../src/assets/images/payment-deliv-main-bg.webp')"
+        payment: "url('../src/assets/images/payment-deliv-main-bg.webp')",
+        history: "url('../src/assets/images/history-bg.webp')"
       },
       dropShadow: {
         '3xl': '0 35px 35px rgba(0, 0, 0, 0.25)',

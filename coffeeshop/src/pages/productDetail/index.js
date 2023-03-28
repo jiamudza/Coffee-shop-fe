@@ -8,6 +8,7 @@ import { AiOutlineRight } from "react-icons/ai";
 import { FaArrowRight } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { BsFillCartCheckFill } from "react-icons/bs";
 
 const ProductDetail = () => {
   
@@ -17,6 +18,7 @@ const ProductDetail = () => {
   const [menuDetail, setMenuDetail] = useState({
     data: {},
   });
+  const [addCartSuccess, setAddCartSuccess] = useState(false)
 
   useEffect(() => {
     axios
@@ -55,7 +57,7 @@ const ProductDetail = () => {
 
   const handleOrder = async(e) => {
     e.preventDefault()
-    console.log(cart)
+    setAddCartSuccess(true)
 
     let result = await axios({
         url: `https://coffeeshop-be.adaptable.app/api/v1/cart/${cart.user_id}`,
@@ -73,8 +75,8 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="font-rubik">
-      <div>
+    <div className={(addCartSuccess === true ? 'overflow-y-hidden' : 'overflow-y-hidden') + "  font-rubik relative"}>
+      <div className="sticky top-0">
         <Header />
       </div>
       <main className="lg:px-20 lg:flex items-center border-t pt-5">
@@ -176,6 +178,18 @@ const ProductDetail = () => {
           >
             Add to Cart
           </button>
+          <div className={(addCartSuccess === true ? 'flex' : 'hidden') + " bg-white rounded-lg shadow-2xl flex-col justify-center items-center px-10 py-5 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"}>
+            <BsFillCartCheckFill size={50} className="text-green-500" />
+            <p className="text-secondary font-bold text-xl mt-10">This menu is successfully added to your cart</p>
+            <button onClick={() => {
+              setAddCartSuccess(false)
+              setCart({
+                ...cart,
+                id_size: 'R',
+                amount: 1,
+              })
+            }} className="bg-primary text-secondary px-3 py-1 rounded-md font-bold">Ok</button>
+          </div>
           <button className="py-3 rounded-lg bg-primary text-secondary hover:bg-secondary hover:text-white active:scale-90 ease-in-out duration-150 w-full mt-5 font-bold">
             Ask a Staff
           </button>
@@ -250,7 +264,7 @@ const ProductDetail = () => {
               <p className="font-bold text-lg">Checkout</p>
               <FaArrowRight onClick={handleOrder}
                 size={60} values='checkout'
-                className="p-4 rounded-full bg-primary text-secondary hover:bg-secondary hover:text-white active:scale-90 ease-in-out duration-150"
+                className="p-4 rounded-full bg-primary text-secondary hover:bg-secondary hover:text-white active:scale-90 ease-in-out duration-100 cursor-pointer"
               />
             </div>
           </div>

@@ -44,6 +44,21 @@ const Header = () => {
     setIsLogin(false);
   };
 
+  const [searchedMenu, setSearcheMenu] =useState([])
+  const [search, setSearch] = useState('')
+  const searchMenu = async(e) => {
+    e.preventDefault();
+    setSearch(e.target.value)
+
+    let result = await axios.get(`https://coffeeshop-be.adaptable.app/api/v1/product?search=${e.target.value}`)
+    .then(res => {
+      setSearcheMenu(res.data.data)
+    })
+    .catch(err => err)
+
+    return result
+  }
+
   useEffect(() => {
     if (localStorage.getItem("@isLogin")) {
         const userId = JSON.parse(localStorage.getItem('@isLogin')).user.user_id
@@ -63,7 +78,9 @@ const Header = () => {
 
 
   return (
-    <div className="font-rubik bg-white pb-5 bg-opacity-90">
+    <div onClick={() => {
+      setSearch("")
+    }} className="font-rubik bg-white pb-5 bg-opacity-90">
       <div
         className={
           drawerOpen
@@ -140,11 +157,26 @@ const Header = () => {
           <div className="flex items-center">
             <div className="flex items-center lg:bg-pale lg:px-4 rounded-3xl mx-5">
               <GoSearch size={25} className="text-text" />
-              <input
+              <input 
+                onChange={searchMenu}
                 type="text"
                 placeholder="Search"
                 className="outline-offset-0 hidden lg:block mx-2 w-28 bg-pale border-none outline-none active:outline-none focus:outline-none"
               />
+            </div>
+            <div className={search.length < 1 ? 'hidden' : "absolute md:flex flex-wrap gap-x-3 gap-y-5 items-center justify-start mx-auto right-0 top-20 shadow-2xl bg-white py-4 w-full lg:w-[35vw] lg:right-72 overflow-y-auto max-h-64 min-h-40 border-[1px] rounded-xl text-center text-text"}>
+                {
+                  searchedMenu.length < 1 ? <p className="mx-auto font-bold text-secondary">We don't have that menu...</p> :
+                  searchedMenu.map(item => {
+                    return <div onClick={() => navigate(`/product/${item.product_id}`)} className="w-full cursor-pointer mx-5 border-b-2 border-secondary flex items-center">
+                      <div className="flex gap-y-2 flex-col items-start w-32 cursor-pointer">
+                    <img src={item.product_image} className="w-20 h-20 rounded-full object-cover mx-auto" />
+                    <p className="font-bold mx-auto">{item.product_name}</p>
+                  </div>
+                  <p className="text-secondary">{item.description.slice(0, 53)} ...</p>
+                    </div>
+                  })
+                }
             </div>
 
             <div className="flex cursor-pointer">
@@ -178,7 +210,7 @@ const Header = () => {
                     <p>Profile</p>
                   </div>
                   <div
-                    onClick={() => navigate("/cart")}
+                    onClick={() => navigate("/payment")}
                     className="py-2 mx-12 flex items-center justify-around cursor-pointer"
                   >
                     <IoMdCart size={25} className="text-text mx-3" />

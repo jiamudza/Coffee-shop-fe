@@ -2,19 +2,23 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
-import creamyLatte from "../../assets/images/creamy-latte.svg";
 
 import { BsFillCreditCard2FrontFill } from "react-icons/bs";
 import { AiFillBank } from "react-icons/ai";
 import { TbTruckDelivery } from "react-icons/tb";
+import {IoIosCheckbox} from "react-icons/io"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
+  const navigate = useNavigate()
+
   const id = JSON.parse(localStorage.getItem("@isLogin")).user.user_id;
   const [menu, setMenu] = useState({
     data: [],
     subtotal: 0,
   });
+  const [paymentSuccess, setPaymentSucess] = useState(false)
 
   const [cartId, setCartId] = useState("");
   useEffect(() => {
@@ -82,6 +86,7 @@ const Payment = () => {
   
 
   const handleCheckout = async(e) => {
+    setPaymentSucess(true)
     console.log(menu.data.product_id)
    menu.data.map(item => {
     return axios({
@@ -102,23 +107,24 @@ const Payment = () => {
       .delete(`https://coffeeshop-be.adaptable.app/api/v1/cart/user/${id}`)
       .then((res) => res.data.data)
       .catch((err) => err.response.data);
+
   };
 
   return (
-    <div className="relative overflow-x-hidden">
-      <div className="sticky top-0">
+    <div className="relative">
+      <div className="sticky top-0 z-20">
         <Header />
       </div>
       <main className="bg-payment bg-auto lg:bg-cover pt-24 pb-28 lg:flex">
-        <section className="lg:w-[50vw] lg:scale-125">
+        <section className="lg:w-[50vw]">
           <h2 className="text-3xl text-center text-white drop-shadow-[6px_1px_2px_#000] shadow-black font-bold">
             Checkout your item now!
           </h2>
-          <div className="lg:w-[25vw] mx-5 lg:mx-auto px-5 py-5 bg-white mt-10 shadow-xl rounded-xl">
-            <p className="mb-5 font-bold text-lg text-secondary text-center">
+          <div className="lg:w-[30vw] mx-5 lg:mx-auto px-5 py-5 bg-white mt-10 shadow-xl rounded-xl">
+            <p className="mb-5 font-bold text-xl text-secondary text-center">
               Order Summary
             </p>
-            <div className=" border-b py-3 overflow-y-scroll h-48 text-sm">
+            <div className=" border-b py-3 overflow-y-scroll h-48 text-xl">
               {menu.data.map((item) => {
                 return (
                   <div
@@ -133,17 +139,19 @@ const Payment = () => {
                     </p>
                     <img
                       src={item.product_image}
-                      className="h-14 w-14 rounded-lg"
+                      className="h-14 w-14 rounded-lg object-cover"
                     />
                     <div>
-                      <p>{item.product_name}</p>
-                      <p>{`${item.amount}x (${item.size})`}</p>
+                      <p className="text-xl font-bold">{item.product_name}</p>
+                      <p className="text-lg">{`${item.amount}x (${item.size})`}</p>
                     </div>
                     <p
                       onClick={(e) =>
                         console.log(e.target.attributes.value.value)
                       }
                       value={item.total}
+
+                      className="text-lg"
                     >
                       IDR{" "}
                       {new Intl.NumberFormat("ja-JP", {
@@ -154,7 +162,7 @@ const Payment = () => {
                 );
               })}
             </div>
-            <div className="flex items-center justify-between py-2 text-secondary">
+            <div className="flex text-xl items-center justify-between py-2 text-secondary">
               <p>SUBTOTAL</p>
               <p>
                 IDR{" "}
@@ -163,7 +171,7 @@ const Payment = () => {
                 }).format(menu.subtotal)}
               </p>
             </div>
-            <div className="flex items-center justify-between py-2 text-secondary">
+            <div className="flex text-xl items-center justify-between py-2 text-secondary">
               <p>TAXT & FEES</p>
               <p>
                 IDR{" "}
@@ -172,7 +180,7 @@ const Payment = () => {
                 }).format(menu.subtotal * (10 / 100))}
               </p>
             </div>
-            <div className="flex items-center justify-between py-2 text-secondary">
+            <div className="flex text-xl items-center justify-between py-2 text-secondary">
               <p>SHIPPING</p>
               <p>
                 IDR{" "}
@@ -181,7 +189,7 @@ const Payment = () => {
                 }).format(10000)}
               </p>
             </div>
-            <div className="flex items-center font-bold text-xl mt-5 justify-between py-2 text-secondary">
+            <div className="flex items-center font-bold text-2xl mt-5 justify-between py-2 text-secondary">
               <p>TOTAL</p>
               <p>
                 IDR{" "}
@@ -192,7 +200,7 @@ const Payment = () => {
             </div>
           </div>
         </section>
-        <section className="mt-10 lg:mt-0 lg:w-[50vw] lg:scale-125 flex flex-col items-center">
+        <section className="mt-10 lg:mt-0 lg:w-[50vw] flex flex-col text-xl items-center">
           <div className="">
             <div className="font-bold text-white flex items-center justify-center gap-36">
               <p className="text-lg drop-shadow-[6px_1px_2px_#000]">
@@ -202,7 +210,7 @@ const Payment = () => {
                 edit
               </p>
             </div>
-            <div className="lg:w-[26vw] bg-white rounded-xl mt-3 p-3 mx-5 lg:mx-auto">
+            <div className="lg:w-[30vw] bg-white rounded-xl mt-3 p-3 mx-5 lg:mx-auto">
               <p className="border-b py-2">
                 <span className="font-bold">Delivery</span> to Iskandar Street
               </p>
@@ -260,10 +268,20 @@ const Payment = () => {
           </div>
           <button
             onClick={handleCheckout}
-            className="py-2 mx-5 px-28 lg:w-[26vw] mt-10  text-white bg-secondary border-2 border-transparent font-bold rounded-lg hover:text-secondary hover:border-transparent hover:bg-primary active:scale-90 ease-in-out duration-200"
+            className="py-2 mx-5 px-28 lg:w-[26vw] mt-10 text-lg whitespace-nowrap text-white bg-secondary border-2 border-transparent font-bold rounded-lg hover:text-secondary hover:border-transparent hover:bg-primary active:scale-90 ease-in-out duration-200"
           >
             Confirm and Pay
           </button>
+          <div className={(paymentSuccess === true ? 'flex' : 'hidden') + " bg-white rounded-lg shadow-2xl px-10 py-5 flex-col flex items-center justify-center fixed transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"}>
+            <IoIosCheckbox size={50} className="text-green-500"  />
+            <p className="text-green-600 font-bold mt-5">Your payment is successfully</p>
+            <p className="text-secondary mt-10">Left the rest to us, just wait for your order and enjoy...</p>
+            <button onClick={() => {
+              setPaymentSucess(false);
+              
+              navigate('/history')
+            }} className="bg-primary text-secondary px-3 py-1 rounded-md mt-5 font-bold">Ok</button>
+          </div>
         </section>
       </main>
       <div className="lg:mt-20 pt-10">
